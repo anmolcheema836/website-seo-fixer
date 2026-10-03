@@ -1,0 +1,27 @@
+openapi: 3.1.0
+info:
+  title: Website SEO Fixer
+  description: Audits websites for technical and on-page SEO issues, identifies what is hurting search visibility, and generates actionable fixes.
+  version: 1.0.0
+servers:
+  - url: https://YOUR_NGROK_URL.ngrok-free.app # We will update this in Step 5
+paths:
+  /api/audit:
+    post:
+      summary: Audit a website for SEO and technical issues
+      operationId: auditWebsite
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The full URL of the website to audit (e.g., https://example.com)
+              required:
+                - url
+      responses:
+        '200':
+          description: A detailed SEO report with a score, categorized issues (Critical, High, Medium, Low), and recommended fixes.
